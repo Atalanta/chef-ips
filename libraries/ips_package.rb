@@ -79,5 +79,8 @@ class Chef
   end
 end
 
-Chef::Platform.set :platform => :solaris2, :resource => :package, :provider => Chef::Provider::Package::IPS
-
+[:solaris2, :omnios].each do |p|
+  Chef::Platform.set(:platform => p,
+                     :resource => :package,
+                     :provider => Chef::Provider::Package::IPS)
+end
